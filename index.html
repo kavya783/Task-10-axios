@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="./assets/css/style.css" rel="stylesheet">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+
+  <title>CRUD Operations using Axios</title>
+
+  
+   
+   
+</head>
+<!-- body -->
+<body>
+<h1 class="text-center pt-4">Crud Operations Using Axios</h1>
+<div class="container mt-4">
+
+  <div class="d-flex justify-content-between align-items-center mb-3 flex-wrap gap-2">
+    <h3 class="m-0 text-success">Students List</h3>
+    <button class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#studentModal">
+      Add Student
+    </button>
+  </div>
+
+ <!-- table form -->
+ <div class="table-responsive d-none d-md-block">
+
+    <table class="table table-bordered text-center align-middle">
+      <thead class="table-secondary">
+        <tr>
+          <th>Profile</th>
+          <th> Name</th>
+          <th>Branch</th>
+          <th>Phone No</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody id="tableBody"></tbody>
+    </table>
+  </div>
+
+</div>
+<!-- card modal -->
+<div class="d-md-none ps-3 ms-3 pe-3 me-3" id="cardContainer"></div>
+<div id="viewCardContainer"></div>
+<div class="modal fade" id="viewStudentModal" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered modal-md modal-sm-down">
+    <div class="modal-content">
+
+      <div class="modal-header bg-primary text-white">
+        <h5 class="modal-title">Student</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+      </div>
+
+      <div class="modal-body d-flex justify-content-center align-items-center p-2">
+        <div id="viewModalBody" class="w-100"></div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Close
+        </button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+ <!-- student modal -->
+<div class="modal fade" id="studentModal" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered modal-md">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <h5 class="modal-title">Add Student</h5>
+        <button class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+
+      <div class="modal-body">
+        <!-- name field -->
+        <div class="mb-3">
+          <label class="form-label">Name</label>
+          <input type="text" class="form-control" id="name">
+          <div id="nameerror" class="text-danger"></div>
+        </div>
+      <!-- branch field -->
+        <div class="mb-3">
+          <label class="form-label">Branch</label>
+          <input type="text" class="form-control" id="branch">
+          <div id="brancherror" class="text-danger"></div>
+        </div>
+      <!-- phone number field -->
+        <div class="mb-3">
+          <label class="form-label">Phone No</label>
+          <input type="number" class="form-control" id="phone">
+          <div id="phoneerror" class="text-danger"></div>
+        </div>
+        <!-- image field -->
+      <div class="mb-3">
+  <label class="form-label">Upload Image</label>
+  <input type="file" class="form-control" id="image" accept="image/png/jpg,.png,.jpg">
+  <div id="imageerror" class="text-danger"></div>
+
+  
+  <img id="previewImage"
+       style="width:100px;display:none;margin-top:10px;border-radius:5px;">
+</div>
+
+      </div>
+
+      <div class="modal-footer">
+        <button class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button class="btn btn-primary" id="addStudentBtn">Add Student</button>
+
+      </div>
+
+    </div>
+  </div>
+</div>
+<!-- deleteModal -->
+<div class="modal fade" id="deleteModal" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+
+      <div class="modal-header bg-danger text-white">
+        <h5 class="modal-title">Confirm Delete</h5>
+        <button class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+
+      <div class="modal-body">
+        Are you sure you want to delete this employee?
+      </div>
+
+      <div class="modal-footer">
+        <button class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+        <button class="btn btn-danger" id="confirmDeleteBtn">Delete</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<!-- bootstrap js -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<!-- axios -->
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+<script src="./assets/javascript/script.js"></script>
+
+</body>
+</html>
